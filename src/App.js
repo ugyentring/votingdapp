@@ -144,25 +144,25 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {votingStatus ? (
-        isConnected ? (
-          <Connected
-            account={account}
-            candidates={candidates}
-            remainingTime={remainingTime}
-            number={number}
-            handleNumberChange={handleNumberChange}
-            voteFunction={vote}
-            showButton={CanVote}
-          />
+      <div className="App">
+        {votingStatus ? (
+          isConnected ? (
+            <Connected
+              account={account}
+              candidates={candidates}
+              remainingTime={remainingTime}
+              number={number}
+              handleNumberChange={handleNumberChange}
+              voteFunction={vote}
+              showButton={CanVote}
+            />
+          ) : (
+            <Login connectWallet={connectToMetamask} />
+          )
         ) : (
-          <Login connectWallet={connectToMetamask} />
-        )
-      ) : (
-        <Finished />
-      )}
-    </div>
+          <Finished />
+        )}
+      </div>
   );
 }
 
