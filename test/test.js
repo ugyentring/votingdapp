@@ -12,7 +12,7 @@ describe("Voting Contract", function () {
   beforeEach(async function () {
     Voting = await ethers.getContractFactory("Voting");
     [owner, addr1, addr2, ...addrs] = await ethers.getSigners();
-    voting = await Voting.deploy(["Alice", "Bob"], 10); // Candidates: Alice and Bob, Voting duration: 10 minutes
+    voting = await Voting.deploy(["karma", "ut"], 10);
     await voting.deployed();
   });
 
