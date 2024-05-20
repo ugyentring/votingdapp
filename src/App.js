@@ -109,6 +109,7 @@ function App() {
     setremainingTime(parseInt(time, 16));
   }
 
+  //function to handle the accounts change
   function handleAccountsChanged(accounts) {
     if (accounts.length > 0 && account !== accounts[0]) {
       setAccount(accounts[0]);
@@ -119,6 +120,7 @@ function App() {
     }
   }
 
+  //function to connect to metamask
   async function connectToMetamask() {
     if (window.ethereum) {
       try {
@@ -144,25 +146,25 @@ function App() {
   }
 
   return (
-      <div className="App">
-        {votingStatus ? (
-          isConnected ? (
-            <Connected
-              account={account}
-              candidates={candidates}
-              remainingTime={remainingTime}
-              number={number}
-              handleNumberChange={handleNumberChange}
-              voteFunction={vote}
-              showButton={CanVote}
-            />
-          ) : (
-            <Login connectWallet={connectToMetamask} />
-          )
+    <div className="App">
+      {votingStatus ? (
+        isConnected ? (
+          <Connected
+            account={account}
+            candidates={candidates}
+            remainingTime={remainingTime}
+            number={number}
+            handleNumberChange={handleNumberChange}
+            voteFunction={vote}
+            showButton={CanVote}
+          />
         ) : (
-          <Finished />
-        )}
-      </div>
+          <Login connectWallet={connectToMetamask} />
+        )
+      ) : (
+        <Finished />
+      )}
+    </div>
   );
 }
 
