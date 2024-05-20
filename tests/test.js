@@ -18,7 +18,7 @@ describe("Voting Contract", function () {
 
   describe("Deployment", function () {
     it("Should set the right owner", async function () {
-      expect(await voting.owner()).to.equal(owner.address);
+      expect(await voting.getOwner()).to.equal(owner.address);
     });
 
     it("Should initialize with the correct candidates", async function () {
@@ -31,7 +31,7 @@ describe("Voting Contract", function () {
     it("Should set the voting duration correctly", async function () {
       const votingStart = await voting.votingStart();
       const votingEnd = await voting.votingEnd();
-      const duration = votingEnd - votingStart;
+      const duration = votingEnd.sub(votingStart);
       expect(duration).to.equal(10 * 60); // 10 minutes in seconds
     });
   });
@@ -79,9 +79,12 @@ describe("Voting Contract", function () {
 
     it("Should return the correct remaining time", async function () {
       const remainingTime = await voting.getRemainingTime();
-      const currentTime = (await ethers.provider.getBlock("latest")).timestamp;
+      const currentTime = ethers.BigNumber.from(
+        (await ethers.provider.getBlock("latest")).timestamp
+      );
       const votingEnd = await voting.votingEnd();
-      expect(remainingTime).to.be.closeTo(votingEnd - currentTime, 2); // allowing a 2 seconds margin
+      const expectedRemainingTime = votingEnd.sub(currentTime);
+      expect(remainingTime).to.be.closeTo(expectedRemainingTime, 2);
     });
   });
 });
