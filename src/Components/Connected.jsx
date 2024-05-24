@@ -11,7 +11,7 @@ const Connected = (props) => {
           padding: "8px",
           color: "white",
           borderRadius: "8px",
-          boxShadow: "0 4px 6px rgba(8, 9, 9, 4)",
+          boxShadow: "0 3px 4px rgba(4, 5, 6, 3)",
         }}
       >
         Metamask Account: {props.account}
