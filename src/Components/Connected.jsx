@@ -3,19 +3,20 @@ import React from "react";
 const Connected = (props) => {
   return (
     <div className="connected-container">
-      <h1 className="connected-header">Connected to Metamask</h1>
+      <h1 className="connected-header">Metamask Connected!</h1>
       <p
         className="connected-account"
         style={{
-          backgroundColor: "gray",
-          padding: "8px",
-          color: "white",
+          backgroundColor: "#4A90E2",
+          padding: "12px",
+          color: "#FFFFFF",
           borderRadius: "8px",
-          boxShadow: "0 3px 4px rgba(4, 5, 6, 3)",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
         }}
       >
         Metamask Account: {props.account}
       </p>
+
       <p className="connected-account">Remaining Time: {props.remainingTime}</p>
       {props.showButton ? (
         <p style={{ color: "red" }} className="connected-account">

@@ -106,7 +106,8 @@ function App() {
       signer
     );
     const time = await contractInstance.getRemainingTime();
-    setremainingTime(parseInt(time, 16));
+    const remainingTimeInSeconds = time.toNumber();
+    setremainingTime(remainingTimeInSeconds);
   }
 
   //function to handle the accounts change
